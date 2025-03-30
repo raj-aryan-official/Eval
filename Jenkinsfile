@@ -1,12 +1,9 @@
 pipeline {
     agent any
+    tools{
+        nodejs 'nodejs'
+    }
     stages {
-        stage('Checkout') {
-            steps {
-                git url: 'https://github.com/raj-aryan-official/Eval.git', branch: 'main'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 bat 'npm install'
@@ -31,7 +28,6 @@ pipeline {
             }
         }
     }
-
     post {
         success {
             echo 'Pipeline completed successfully!'
